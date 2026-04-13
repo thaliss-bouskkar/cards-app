@@ -1,0 +1,230 @@
+/* ===== Card principale (Detaille) ===== */
+.bc {
+  max-width: 420px;
+  margin: 40px auto;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 24px 22px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+  border: 2px solid #4f46e5;
+  animation: fadeSlide 0.8s ease-out forwards, borderPulse 2s infinite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: auto;  /* <-- important pour responsive */
+}
+
+.bc:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18);
+}
+
+/* Image utilisateur */
+.bc img {
+  display: block;
+  margin: 0 auto 14px;
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #4f46e5;
+  box-shadow: 0 0 15px rgba(79, 70, 229, 0.5);
+  animation: borderPulse 2s infinite;
+}
+
+/* Nom */
+.bc h3 {
+  margin: 8px 0 4px;
+  font-size: 20px;
+  color: #111827;
+}
+
+/* Badge Student */
+#sta {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 999px;
+  background: #e0f2fe;
+  color: #0369a1;
+  font-weight: 600;
+}
+
+/* Infos ligne par ligne */
+.info1 {
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  padding: 6px 0;
+  font-size: 14px;
+  border-bottom: 1px dashed #e5e7eb;
+  flex-wrap: wrap;  /* <-- pour éviter overflow */
+}
+
+.info1 span:first-child {
+  font-weight: 600;
+  color: #111827;
+  text-align: left;
+  flex: 0 0 100px;
+  word-break: break-word; /* <-- responsive */
+}
+
+.info1 span:last-child {
+  color: #4b5563;
+  flex: 1;
+  text-align: right;
+  word-break: break-word; /* <-- responsive */
+}
+
+/* Texte description */
+.general-info1 {
+  margin-top: 16px;
+  padding: 16px;
+  font-size: 14px;
+  color: #111827;
+  background: #f9fafb;
+  border-radius: 14px;
+  border-left: 4px solid #06b6d4;
+  line-height: 1.6;
+  animation: fadeSlide 0.9s ease-out forwards;
+  height: auto; /* <-- important pour mobile */
+  overflow: hidden; /* empêche débordement */
+}
+
+/* ===== Dark Mode ===== */
+.bc.dark-mode {
+  background: #1f2937;
+  border-color: #4f46e5;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.bc.dark-mode:hover {
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+}
+
+.bc.dark-mode img {
+  border: 4px solid #4f46e5;
+  box-shadow: 0 0 15px rgba(79, 70, 229, 0.6);
+}
+
+.bc.dark-mode h3 { color: #f3f4f6; }
+.bc.dark-mode #sta { background: #374151; color: #38bdf8; }
+.bc.dark-mode .info1 span:first-child { color: #f3f4f6; }
+.bc.dark-mode .info1 span:last-child { color: #d1d5db; }
+.bc.dark-mode .info1 { border-bottom: 1px dashed #4b5563; }
+.bc.dark-mode .general-info1 { color: #f3f4f6; background: #374151; border-left: 4px solid #06b6d4; }
+
+/* Animations */
+@keyframes borderPulse {
+  0% { border-color: #4f46e5; box-shadow: 0 0 10px rgba(79, 70, 229, 0.4); }
+  50% { border-color: #06b6d4; box-shadow: 0 0 20px rgba(6, 182, 212, 0.6); }
+  100% { border-color: #4f46e5; box-shadow: 0 0 10px rgba(79, 70, 229, 0.4); }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .bc { max-width: 85%; padding: 18px 16px; border-radius: 16px;margin-top: 80px; }
+  .bc img { width: 110px; height: 110px; margin-bottom: 12px; }
+  .bc h3 { font-size: 18px; }
+  #sta { font-size: 11px; padding: 3px 8px; }
+  .info1 { font-size: 13px; padding: 5px 0; }
+  .general-info1 { font-size: 13px; padding: 12px; margin-top: 14px; }
+}
+
+@media (max-width: 480px) {
+  .bc { padding: 16px 14px;margin-top: 80px; }
+  .bc img { width: 95px; height: 95px; }
+  .info1 { font-size: 12px; padding: 4px 0; }
+  .general-info1 { font-size: 12px; padding: 10px; }
+}
+
+/* Ultra small phones <400px */
+@media (max-width: 350px) {
+  .bc { max-width: 90%; padding: 12px 10px;margin-top: 50px; }
+  .bc img { width: 80px; height: 80px; }
+  .bc h3 { font-size: 16px; }
+  #sta { font-size: 10px; padding: 2px 6px; }
+
+  .info1 {
+    flex-direction: column; /* <-- empêche overflow */
+    align-items: flex-start;
+    font-size: 12px;
+    padding: 3px 0;
+  }
+
+  .info1 span:first-child, .info1 span:last-child {
+    flex: 1;
+    text-align: left;
+    margin-bottom: 4px;
+  }
+
+  .general-info1 { font-size: 12px; padding: 10px; margin-top: 10px; }
+}
+.image-wrapper {
+  position: relative;
+  width: 200px;
+  margin: auto;
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* نخبي input */
+.file-input {
+  display: none;
+}
+
+/* icon ديال التغيير */
+.edit-icon {
+  position: absolute;
+  bottom: 50px;
+  left: 140px;
+  width: 36px;
+  height: 37px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  color: #ffffffb1;
+  transition: transform 0.2s ease, background 0.2s ease;
+  /* tooltip container */
+  position: relative;
+}
+
+.edit-icon::after {
+  content: "Edit Image";  /* النص اللي باغي يظهر */
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4f46e5;
+  color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;          /* مهم للtypewriter effect */
+  width: 0;                  /* يبدأ من 0 */
+  transition: opacity 0.2s ease;
+}
+
+/* Animation typewriter */
+.edit-icon:hover::after {
+  opacity: 1;
+  animation: typing 0.5s steps(9, end) forwards; /* 9 lettres pour Edit Image */
+  transform: translateX(-50%) translateY(-5px);
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 72px; }  /* largeur approximative du texte "Edit Image" */
+}
+

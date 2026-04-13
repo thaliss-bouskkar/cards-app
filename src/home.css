@@ -1,0 +1,363 @@
+/* Wrapper */
+/* Wrapper */
+.table-wrapper {
+  grid-column: 1 / -1;
+  background: #ebeaea;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  /* الحل هنا 👇 */
+  overflow-x: auto;      /* كنخليو غير السكرول ديال الجناب إلا كان الطابلو عريض */
+  overflow-y: visible;   /* كنحيدو السكرول العمودي الدخلاني */
+  height: auto;          /* الطول كيولي مفتوح */
+  max-height: none;      /* كنتأكدو ماكاينش حد */
+  
+  animation: fadeSlide 0.8s ease-out forwards;
+}
+
+.table-wrapper-dark {
+  grid-column: 1 / -1;
+  background: #1f2937;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  /* الحل هنا 👇 */
+  overflow-x: auto;
+  overflow-y: visible;
+  height: auto;
+  max-height: none;
+  
+  animation: fadeSlide 0.8s ease-out forwards;
+}
+
+/* =========================
+   Search Box
+========================= */
+.search-container {
+  position: relative;
+  width: 90%;
+  max-width: 80%;
+  margin: 10px auto;
+  right:25px ;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 10px 40px 10px 15px; /* space for icon on right */
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background: #ffffff; /* Light mode default */
+  color: #111827;
+}
+
+.search-container.dark input {
+  background: #374151;
+  color: #e5e7eb;
+  border: 1px solid #4b5563;
+}
+
+.search-container input::placeholder {
+  color: #9ca3af;
+}
+
+.search-container.dark input::placeholder {
+  color: #d1d5db;
+}
+
+.search-container input:focus {
+  outline: none;
+  border-color: linear-gradient(135deg, #4f46e5, #06b6d4); /* مطابق للجدول */
+  box-shadow: 0 0 10px rgba(14, 115, 203, 0.3);
+}
+
+.search-container .search-icon {
+  position: absolute;
+  left:100%;
+  top: 39%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  transition: filter 0.3s ease;
+}
+
+.search-container.dark .search-icon {
+  filter: brightness(0) invert(1); /* يتحول أبيض في dark mode */
+}
+
+.search-container input:focus + .search-icon {
+  filter: brightness(0) saturate(100%) invert(39%) sepia(95%) saturate(667%) hue-rotate(221deg) brightness(100%) contrast(95%);
+}
+
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  color: #111827;
+}
+
+.styled-table thead th {
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  color: #fff;
+  padding: 14px;
+  text-align: left;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+.styled-table tbody tr {
+  background: #ffffff;
+  border-bottom: 1px solid #ececf2;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.styled-table tbody tr:hover {
+  background: #f4f6f8;
+  transform: scale(1.01);
+}
+
+.styled-table td {
+  padding: 12px 14px;
+  vertical-align: middle;
+  color: #4b5563;
+}
+
+/* Dark Table */
+.styled-table-dark {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  color: #f3f4f6;
+  background: #1f2937;
+}
+
+.styled-table-dark thead th {
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  color: #fff;
+  padding: 14px;
+  text-align: left;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+.styled-table-dark tbody tr {
+  background: #374151;
+  border-bottom: 1px solid #4b5563;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.styled-table-dark tbody tr:hover {
+  background: #4b5563;
+  transform: scale(1.01);
+}
+
+.styled-table-dark td {
+  padding: 12px 14px;
+  vertical-align: middle;
+  color: #e5e7eb;
+}
+
+/* Buttons */
+.btn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.3s ease;
+}
+
+.btn.edit {
+  background: #4f46e5;
+  color: white;
+  text-decoration: none;
+}
+.btn.edit:hover {
+  background: #4338ca;
+}
+
+.btn.delete {
+  background: #ef4444;
+  color: white;
+}
+.btn.delete:hover {
+  background: #dc2626;
+}
+
+/* Add Button */
+.add-btn {
+  grid-column: 1 / -1;
+  justify-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+}
+
+.add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(6, 182, 212, 0.5);
+  text-decoration: none;
+}
+
+/* Headings */
+#h1 {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #aaa7b5;
+}
+
+#h0 {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #3f3e42;
+}
+
+/* Actions cell */
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+@media (max-width: 768px) {
+
+  .table-wrapper,
+  .table-wrapper-dark {
+    padding: 12px;
+    overflow-x: auto;
+  }
+
+  .styled-table,
+  .styled-table-dark {
+    min-width: 900px; /* force horizontal scroll */
+    font-size: 12px;
+  }
+
+  .styled-table th,
+  .styled-table td,
+  .styled-table-dark th,
+  .styled-table-dark td {
+    padding: 10px 12px;
+    white-space: nowrap;
+  }
+
+  /* Disable scale on mobile */
+  .styled-table tbody tr:hover,
+  .styled-table-dark tbody tr:hover {
+    transform: none;
+  }
+
+  /* Scrollbar clean */
+  .table-wrapper::-webkit-scrollbar,
+  .table-wrapper-dark::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .table-wrapper::-webkit-scrollbar-thumb,
+  .table-wrapper-dark::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #4f46e5, #06b6d4);
+    border-radius: 999px;
+  }
+}
+.styled-table thead th,
+.styled-table-dark thead th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+
+.styled-table tbody tr .hover-info,
+.styled-table-dark tbody tr .hover-info {
+  position: relative;
+  cursor: pointer;
+}
+
+.styled-table tbody tr .hover-info::after,
+.styled-table-dark tbody tr .hover-info::after {
+  content: "Ouvrir la cart"; /* النص الجديد الجذاب */
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4f46e5;
+  color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* يظهر النص عند hover مع typewriter */
+.styled-table tbody tr .hover-info:hover::after,
+.styled-table-dark tbody tr .hover-info:hover::after {
+  opacity: 1;
+  animation: typing 0.3s steps(28, end) forwards; /* steps = عدد الحروف */
+}
+
+/* Animation typewriter */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 70px; }  /* largeur approximative du texte */
+}
+/* فرض حيد السكرول العمودي من الـ wrapper */
+.table-wrapper, 
+.table-wrapper-dark {
+    height: auto !important;
+    max-height: none !important;
+    overflow-y: visible !important;
+}
+
+/* إلا كان المشكل جاي من شي حاجة لداخل فوسطهم */
+.table-wrapper > *, 
+.table-wrapper-dark > * {
+    overflow-y: visible !important;
+}
+
+/* تزيين السكرول الأفقي (التحتاني) باش ما يبقاش داك الـ Gris الغليظ */
+.table-wrapper::-webkit-scrollbar,
+.table-wrapper-dark::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb,
+.table-wrapper-dark::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+/* إخفاء السكرول في Chrome, Safari و Opera */
+.table-wrapper::-webkit-scrollbar,
+.table-wrapper-dark::-webkit-scrollbar {
+    width: 0px; /* كيرد العرض ديالو صفر يعني كيتخبع */
+    background: transparent; 
+}
+
+/* إخفاء السكرول في Firefox */
+.table-wrapper,
+.table-wrapper-dark {
+    scrollbar-width: none; /* خاص بـ Firefox */
+    -ms-overflow-style: none;  /* خاص بـ Internet Explorer */
+    
+    /* زيادة تأكيد باش ما يوقعش تداخل */
+    overflow-y: hidden !important; 
+}
